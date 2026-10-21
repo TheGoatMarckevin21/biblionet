@@ -3,7 +3,7 @@ class Adherent {
     private $db;
 
     public function __construct() {
-        $this->db = Database::getInstance()->getConnection();
+      $this->db = Database::getConnection();
     }
 
     // Récupérer tous les adhérents

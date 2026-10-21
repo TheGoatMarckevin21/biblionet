@@ -1,6 +1,6 @@
 <?php 
 $isEdit = isset($adherent); 
-$action = $isEdit ? "/adherents/update/{$adherent['id']}" : "/adherents/store";
+$action = $isEdit ? APP_URL . "/adherents/update/{$adherent['id']}" : APP_URL . "/adherents/store";
 ?>
 
 <div class="row justify-content-center">
@@ -32,7 +32,7 @@ $action = $isEdit ? "/adherents/update/{$adherent['id']}" : "/adherents/store";
                     </div>
 
                     <div class="d-flex justify-content-between">
-                        <a href="/adherents" class="btn btn-secondary">Annuler</a>
+                        <a href="<?= APP_URL ?>/adherents" class="btn btn-secondary">Annuler</a>
                         <button type="submit" class="btn btn-success"><?= $isEdit ? 'Mettre à jour' : 'Enregistrer' ?></button>
                     </div>
                 </form>

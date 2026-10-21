@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h2>Gestion des Adhérents</h2>
-    <a href="/adherents/create" class="btn btn-primary">
+    <a href="<?= APP_URL ?>/adherents/create" class="btn btn-primary">
         <i class="bi bi-person-plus"></i> Nouveau Membre
     </a>
 </div>
@@ -28,8 +28,8 @@
                             <td><span class="badge bg-info text-dark"><?= htmlspecialchars($a['classe']) ?></span></td>
                             <td><?= htmlspecialchars($a['telephone']) ?></td>
                             <td class="text-center">
-                                <a href="/adherents/edit/<?= $a['id'] ?>" class="btn btn-sm btn-outline-warning me-1">Modifier</a>
-                                <a href="/adherents/delete/<?= $a['id'] ?>" class="btn btn-sm btn-outline-danger" onclick="return confirm('Confirmer la suppression ?')">Supprimer</a>
+                                <a href="<?= APP_URL ?>/adherents/edit/<?= $a['id'] ?>" class="btn btn-sm btn-outline-warning me-1">Modifier</a>
+                                <a href="<?= APP_URL ?>/adherents/delete/<?= $a['id'] ?>" class="btn btn-sm btn-outline-danger" onclick="return confirm('Confirmer la suppression ?')">Supprimer</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

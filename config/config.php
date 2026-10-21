@@ -11,7 +11,7 @@ if (file_exists($envFile)) {
 }
 
 define('APP_ENV', $_ENV['APP_ENV'] ?? 'local');
-define('APP_URL', rtrim($_ENV['APP_URL'] ?? 'http://localhost', '/'));
+define('APP_URL', rtrim($_ENV['APP_URL'] ?? 'http://localhost/biblionet/public', '/'));
 define('DB_HOST', $_ENV['DB_HOST'] ?? 'localhost');
 define('DB_NAME', $_ENV['DB_NAME'] ?? 'biblionet');
 define('DB_USER', $_ENV['DB_USER'] ?? 'root');
