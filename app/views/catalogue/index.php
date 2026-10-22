@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div class="p-4 mb-4 bg-dark text-white rounded-3 shadow-sm">
     <div class="container-fluid py-2">
         <h1 class="display-6 fw-bold">📚 Catalogue public BiblioNet</h1>
@@ -54,10 +53,4 @@
         </div>
     </div>
     <?php endforeach; ?>
-=======
-<div class="p-5 mb-4 bg-white rounded-3 shadow-sm">
-    <h1 class="display-5 fw-bold">Bienvenue sur BiblioNet</h1>
-    <p class="fs-4">Le socle MVC et la base de données sont opérationnels !</p>
-    <span class="badge bg-success fs-6">Livres en base : <?= e((string)$nbLivres) ?></span>
->>>>>>> e077a350f33c36a7ed5e99e172b68f9a5c5c62db
 </div>
