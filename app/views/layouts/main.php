@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BiblioNet - Gestion de Bibliothèque</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<<<<<<< HEAD
     <link href="<?= APP_URL ?>/assets/css/style.css" rel="stylesheet">
+=======
+>>>>>>> e077a350f33c36a7ed5e99e172b68f9a5c5c62db
 </head>
 <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 shadow-sm">
@@ -31,6 +34,9 @@
     <main class="container">
         <?= $content ?>
     </main>
+<<<<<<< HEAD
     <script src="<?= APP_URL ?>/assets/js/app.js"></script>
+=======
+>>>>>>> e077a350f33c36a7ed5e99e172b68f9a5c5c62db
 </body>
 </html>
