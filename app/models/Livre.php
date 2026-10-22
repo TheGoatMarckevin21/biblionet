@@ -35,20 +35,7 @@ class Livre {
 
     public function create(array $data): bool {
         $stmt = $this->db->prepare(
-            "INSERT INTO livres (titre, auteur, categorie, annee, nb_exemplaires) VALUES (?, ?, ?, ?, ?)"
-        );
-        return $stmt->execute([
-            $data['titre'],
-            $data['auteur'],
-            $data['categorie'],
-            (int)$data['annee'],
-            (int)$data['nb_exemplaires']
-        ]);
-    }
-
-    public function update(int $id, array $data): bool {
-        $stmt = $this->db->prepare(
-            "UPDATE livres SET titre = ?, auteur = ?, categorie = ?, annee = ?, nb_exemplaires = ? WHERE id = ?"
+            "INSERT INTO livres (titre, auteur, categorie, annee, nb_exemplaires, image) VALUES (?, ?, ?, ?, ?, ?)"
         );
         return $stmt->execute([
             $data['titre'],
@@ -56,6 +43,21 @@ class Livre {
             $data['categorie'],
             (int)$data['annee'],
             (int)$data['nb_exemplaires'],
+            $data['image'] ?? null
+        ]);
+    }
+
+    public function update(int $id, array $data): bool {
+        $stmt = $this->db->prepare(
+            "UPDATE livres SET titre = ?, auteur = ?, categorie = ?, annee = ?, nb_exemplaires = ?, image = ? WHERE id = ?"
+        );
+        return $stmt->execute([
+            $data['titre'],
+            $data['auteur'],
+            $data['categorie'],
+            (int)$data['annee'],
+            (int)$data['nb_exemplaires'],
+            $data['image'] ?? null,
             $id
         ]);
     }

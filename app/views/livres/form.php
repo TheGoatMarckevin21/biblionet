@@ -10,7 +10,7 @@ $actionUrl = $isEdit ? APP_URL . "/livres/update/" . $livre['id'] : APP_URL . "/
                 <h4 class="mb-0"><?= e($title) ?></h4>
             </div>
             <div class="card-body p-4">
-                <form method="POST" action="<?= $actionUrl ?>">
+                <form method="POST" action="<?= $actionUrl ?>" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label class="form-label">Titre du livre</label>
                         <input type="text" name="titre" class="form-control" required 
@@ -43,6 +43,21 @@ $actionUrl = $isEdit ? APP_URL . "/livres/update/" . $livre['id'] : APP_URL . "/
                         </div>
                     </div>
 
+                    <div class="mb-3">
+                        <label class="form-label">Image de couverture <small class="text-secondary">(JPG, PNG ou WebP, 2 Mo max)</small></label>
+                        <?php if (!empty($livre['image'])): ?>
+                            <div class="mb-2">
+                                <img src="<?= e(book_image($livre['image'])) ?>" alt="Couverture actuelle"
+                                     style="height: 140px; border-radius: 8px; object-fit: cover;">
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" name="remove_image" value="1" id="remove_image">
+                                <label class="form-check-label" for="remove_image">Supprimer l'image actuelle</label>
+                            </div>
+                        <?php endif; ?>
+                        <input type="file" name="image" class="form-control" accept="image/jpeg,image/png,image/webp">
+                    </div>
+
                     <div class="d-flex justify-content-between mt-3">
                         <a href="<?= APP_URL ?>/livres" class="btn btn-secondary">Annuler</a>
                         <button type="submit" class="btn btn-success">Enregistrer</button>
@@ -51,4 +66,4 @@ $actionUrl = $isEdit ? APP_URL . "/livres/update/" . $livre['id'] : APP_URL . "/
             </div>
         </div>
     </div>
-</div>lace 
+</div> 

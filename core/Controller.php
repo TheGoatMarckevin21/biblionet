@@ -11,12 +11,18 @@ abstract class Controller {
         }
 
         extract($data);
+        $flash = $_SESSION['flash'] ?? null;
+        unset($_SESSION['flash']);
 
         ob_start();
         require $viewPath;
         $content = ob_get_clean();
 
         require dirname(__DIR__) . "/app/views/layouts/main.php";
+    }
+
+    protected function flash(string $type, string $message): void {
+        $_SESSION['flash'] = ['type' => $type, 'message' => $message];
     }
 
     /**

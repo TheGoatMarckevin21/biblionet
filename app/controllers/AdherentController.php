@@ -60,7 +60,12 @@ class AdherentController extends Controller {
     }
 
     public function delete($id) {
-        $this->adherentModel->delete($id);
+        try {
+            $this->adherentModel->delete($id);
+            $this->flash('success', 'Adhérent supprimé.');
+        } catch (PDOException $e) {
+            $this->flash('danger', 'Suppression impossible : cet adhérent a des emprunts enregistrés.');
+        }
         $this->redirect('adherents');
     }
 }

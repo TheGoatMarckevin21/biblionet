@@ -1,33 +1,349 @@
-/* Styles personnalisés BiblioNet */
+/* ========================================================
+   BiblioNet — Thème Sombre Moderne (Dark Midnight)
+   ======================================================== */
+
+:root {
+    --primary-color: #3b82f6;
+    --primary-hover: #2563eb;
+    --primary-gradient: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    --bg-page: #0b0f19;
+    --bg-card: #111827;
+    --bg-card-hover: #162032;
+    --bg-header: #0f172a;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-focus: #3b82f6;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --shadow-dark: 0 10px 30px rgba(0, 0, 0, 0.5);
+    --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.35);
+    --shadow-hover: 0 12px 28px rgba(37, 99, 235, 0.25);
+}
+
 body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-page) !important;
+    color: var(--text-primary) !important;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #f8f9fa;
+    letter-spacing: -0.01em;
 }
 
-main, .container {
+main {
     flex: 1;
 }
 
-/* Animation subtile sur les cartes du catalogue */
-.card {
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+/* Animations d'entrée */
+.page-fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================================
+   Barre de Navigation Sombre
+   ======================================================== */
+.main-navbar {
+    background: rgba(11, 15, 25, 0.85) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.75rem 0;
+}
+
+.brand-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background: var(--primary-gradient);
     border-radius: 10px;
+    color: #fff;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
 }
 
-.card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1) !important;
+.brand-text {
+    font-size: 1.35rem;
+    letter-spacing: -0.02em;
+    color: #ffffff;
 }
 
-.navbar-brand {
-    letter-spacing: 0.5px;
+.text-primary-gradient {
+    background: linear-gradient(135deg, #60a5fa 0%, #93c5fd 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.navbar-nav .nav-link {
+    font-weight: 500;
+    color: var(--text-secondary) !important;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    padding: 0.5rem 0.85rem !important;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* Chip utilisateur */
+.user-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    padding: 0.25rem 0.75rem 0.25rem 0.35rem;
+    border-radius: 50px;
+    color: #f1f5f9;
+}
+
+.user-avatar {
+    width: 28px;
+    height: 28px;
+    background: var(--primary-gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: #fff;
+}
+
+.user-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* ========================================================
+   Boutons & Gradients
+   ======================================================== */
+.btn-primary-gradient {
+    background: var(--primary-gradient);
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+    transition: all 0.25s ease;
+}
+
+.btn-primary-gradient:hover {
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+    color: #ffffff;
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+    transform: translateY(-1px);
+}
+
+.btn {
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* ========================================================
+   Cartes & Conteneurs Sombres
+   ======================================================== */
+.card {
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 14px;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+    overflow: hidden;
+    color: var(--text-primary);
+}
+
+.card-hover-effect:hover {
+    transform: translateY(-4px);
+    background-color: var(--bg-card-hover) !important;
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(59, 130, 246, 0.4) !important;
+}
+
+.card-header {
+    background-color: var(--bg-header) !important;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+/* ========================================================
+   Tableaux Sombres
+   ======================================================== */
+.table {
+    margin-bottom: 0;
+    color: var(--text-primary);
+    background-color: var(--bg-card) !important;
 }
 
 .table th {
+    background-color: #0c121e !important;
+    color: #94a3b8 !important;
     font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.table td {
+    background-color: var(--bg-card) !important;
+    color: #cbd5e1 !important;
+    padding: 1rem;
+    vertical-align: middle;
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.table tbody tr:hover td {
+    background-color: #1a2234 !important;
+    color: #ffffff !important;
+}
+
+/* ========================================================
+   Badges Néon / Soft Dark
+   ======================================================== */
+.badge {
+    font-weight: 600;
+    padding: 0.45em 0.85em;
+    border-radius: 50px;
+    letter-spacing: 0.02em;
+}
+
+.badge-soft-success {
+    background: rgba(16, 185, 129, 0.15) !important;
+    color: #34d399 !important;
+    border: 1px solid rgba(16, 185, 129, 0.3) !important;
+}
+
+.badge-soft-warning {
+    background: rgba(245, 158, 11, 0.15) !important;
+    color: #fbbf24 !important;
+    border: 1px solid rgba(245, 158, 11, 0.3) !important;
+}
+
+.badge-soft-danger {
+    background: rgba(239, 68, 68, 0.15) !important;
+    color: #f87171 !important;
+    border: 1px solid rgba(239, 68, 68, 0.3) !important;
+}
+
+.badge-soft-info {
+    background: rgba(59, 130, 246, 0.15) !important;
+    color: #60a5fa !important;
+    border: 1px solid rgba(59, 130, 246, 0.3) !important;
+}
+
+.badge-soft-secondary {
+    background: rgba(148, 163, 184, 0.12) !important;
+    color: #94a3b8 !important;
+    border: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+
+/* ========================================================
+   Bannière Hero Sombre
+   ======================================================== */
+.hero-banner {
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+    border-radius: 18px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ========================================================
+   Boutons Filtres Pilules (Dark Mode)
+   ======================================================== */
+.filter-pill {
+    cursor: pointer;
+    border-radius: 50px;
+    padding: 0.4rem 1rem;
     font-size: 0.85rem;
-    letter-spacing: 0.5px;
+    font-weight: 600;
+    border: 1px solid var(--border-color);
+    background: #1e293b;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.filter-pill:hover {
+    background: #334155;
+    color: #ffffff;
+    border-color: #475569;
+}
+
+.filter-pill.active {
+    background: var(--primary-color) !important;
+    color: #ffffff !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+}
+
+/* ========================================================
+   Formulaires & Champs de Saisie Sombres
+   ======================================================== */
+.form-control, .form-select, .input-group-text {
+    background-color: #0f172a !important;
+    border: 1px solid #334155 !important;
+    color: #f8fafc !important;
+    border-radius: 10px;
+    padding: 0.65rem 0.95rem;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.form-control::placeholder {
+    color: #64748b !important;
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: #0f172a !important;
+    border-color: var(--border-focus) !important;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25) !important;
+    color: #ffffff !important;
+}
+
+.form-label {
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: #cbd5e1;
+    margin-bottom: 0.4rem;
+}
+
+/* ========================================================
+   Pied de page Sombre
+   ======================================================== */
+.footer {
+    border-top: 1px solid var(--border-color);
+    background-color: #090d16 !important;
+    color: var(--text-muted);
+}
+
+/* SweetAlert2 Dark mode overrides */
+.swal2-popup.swal2-modal {
+    background: #111827 !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8) !important;
+}
+.swal2-title, .swal2-html-container {
+    color: #f8fafc !important;
 }

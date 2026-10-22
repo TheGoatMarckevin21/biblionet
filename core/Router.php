@@ -17,7 +17,7 @@ class Router {
             require_once $controllerFile;
             if (class_exists($controllerName)) {
                 $controller = new $controllerName();
-                if (method_exists($controller, $methodName)) {
+                if ($methodName[0] !== '_' && is_callable([$controller, $methodName])) {
                     call_user_func_array([$controller, $methodName], $params);
                     return;
                 }
