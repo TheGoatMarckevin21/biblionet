@@ -5,7 +5,9 @@ class Router {
         $parts = $url === '' ? [] : explode('/', $url);
 
         
-        $controllerName = !empty($parts[0]) ? ucfirst(strtolower($parts[0])) . 'Controller' : 'CatalogueController';
+        $rawName = !empty($parts[0]) ? rtrim(strtolower($parts[0]), 's') : 'catalogue';
+        $controllerName = ucfirst($rawName) . 'Controller';
+        
         $methodName = $parts[1] ?? 'index';
         $params = array_slice($parts, 2);
 

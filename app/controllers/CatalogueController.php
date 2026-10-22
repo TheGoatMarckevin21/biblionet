@@ -1,12 +1,15 @@
 <?php
+require_once dirname(__DIR__) . '/models/Livre.php';
+
 class CatalogueController extends Controller {
     public function index(): void {
-    
-        $pdo = Database::getConnection();
-        $nbLivres = $pdo->query("SELECT COUNT(*) FROM livres")->fetchColumn();
+        $livreModel = new Livre();
+        $search = trim($_GET['q'] ?? '');
+        $livres = $livreModel->all($search !== '' ? $search : null);
 
         $this->render('catalogue/index', [
-            'nbLivres' => $nbLivres
+            'livres' => $livres,
+            'search' => $search
         ]);
     }
 }
